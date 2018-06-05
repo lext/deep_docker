@@ -1,4 +1,5 @@
 # Copying the git settings
+
 cp ~/.gitconfig gitconfig
 
 if [ ! -f docker_identity ]; then
@@ -22,6 +23,7 @@ if [ ! -f authorized_keys ]; then
 
 fi
 
+ssh-keygen -f "/home/lext/.ssh/known_hosts" -R [localhost]:1231
 # Building the Docker image
 docker build -t deep_docker .
 
