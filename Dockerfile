@@ -1,6 +1,6 @@
 FROM nvidia/cuda:9.1-cudnn7-devel-ubuntu16.04
 
-MAINTAINER Aleksei Tiulpin, University of Oulu, Version 1.0
+MAINTAINER Aleksei Tiulpin, University of Oulu, Version 2.0
 
 # Setting up the system
 
@@ -16,15 +16,15 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
          ca-certificates \
          libjpeg-dev \
          libpng-dev \
-	 unzip \
-	 zip \
-	 locales \
-	 emacs \
-	 libgl1-mesa-glx \
-	 openssh-server \
-	 screen \	 	  
-	 libturbojpeg \
-	 rsync
+	     unzip \
+	     zip \
+	     locales \
+	     emacs \
+	     libgl1-mesa-glx \
+	     openssh-server \
+	     screen \	 	  
+	     libturbojpeg \
+	     rsync
 
 RUN locale-gen --purge en_US.UTF-8
 RUN echo -e 'LANG="en_US.UTF-8"\nLANGUAGE="en_US:en"\n' > /etc/default/locale
@@ -66,12 +66,12 @@ COPY run_screens_docker.sh /root/
 COPY authorized_keys /root/.ssh/authorized_keys
 COPY docker_identity /root/.ssh/id_rsa
 COPY docker_identity.pub /root/.ssh/id_rsa.pub
-COPY kill_screens.sh /root/kill_screens.sh
 COPY gitconfig /root/.gitconfig
 
 RUN chown -R root:root /root
 RUN chmod -R 600 /root 
 
-
 EXPOSE 22
-CMD ["/usr/sbin/sshd", "-D"]
+ENTRYPOINT ["/usr/sbin/sshd", "-D"]
+
+
