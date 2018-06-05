@@ -42,11 +42,11 @@ RUN pip install jpeg4py
 RUN conda install -y -c soumith magma-cuda91
 RUN conda install -y numpy pyyaml scipy ipython mkl matplotlib
 RUN conda install -y -c menpo opencv3
-RUN pip install tensorflow-gpu tensorboardx scikit-learn pandas jupyterlab
+RUN pip install tensorflow-gpu tensorboardx scikit-learn pandas jupyterlab keras
 RUN pip install termcolor tqdm
-RUN pip install http://download.pytorch.org/whl/cu91/torch-0.3.1-cp36-cp36m-linux_x86_64.whl
+RUN pip install http://download.pytorch.org/whl/cu91/torch-0.4.0-cp36-cp36m-linux_x86_64.whl
 RUN pip install torchvision
-
+RUN pip install pydicom
 
 # SSH access
 RUN mkdir /var/run/sshd
@@ -60,5 +60,18 @@ ENV NOTVISIBLE "in users profile"
 RUN echo "export VISIBLE=now" >> /etc/profile
 RUN mkdir -p /root/.ssh/
 RUN echo "export PATH=$PATH:/opt/conda/bin" >> /root/.bashrc
+
+# Setting the scripts to setup the environment
+COPY run_screens_docker.sh /root/
+COPY authorized_keys /root/.ssh/authorized_keys
+COPY docker_identity /root/.ssh/id_rsa
+COPY docker_identity.pub /root/.ssh/id_rsa.pub
+COPY kill_screens.sh /root/kill_screens.sh
+COPY gitconfig /root/.gitconfig
+
+RUN chown -R root:root /root
+RUN chmod -R 600 /root 
+
+
 EXPOSE 22
 CMD ["/usr/sbin/sshd", "-D"]
