@@ -24,7 +24,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 	     openssh-server \
 	     screen \	 	  
 	     libturbojpeg \
-	     rsync
+	     rsync \
+         wget
 
 RUN locale-gen --purge en_US.UTF-8
 RUN echo -e 'LANG="en_US.UTF-8"\nLANGUAGE="en_US:en"\n' > /etc/default/locale
