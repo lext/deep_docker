@@ -46,7 +46,6 @@ RUN conda install -y numpy pyyaml scipy ipython mkl matplotlib
 RUN pip install tensorflow-gpu tensorboardx scikit-learn pandas jupyterlab keras
 RUN pip install termcolor tqdm
 RUN pip install opencv-python
-RUN ls /opt/conda/bin
 RUN pip install http://download.pytorch.org/whl/cu91/torch-0.4.0-cp36-cp36m-linux_x86_64.whl
 RUN pip install torchvision
 RUN pip install pydicom

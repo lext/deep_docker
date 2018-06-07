@@ -3,7 +3,6 @@
 
 Minimalistic docker environment for running deep learning experiments. It is built on top of nvidia-docker and has tensorflow, keras and pytorch 0.4.0 installed. Furthermore, it automatically runs Tensorboard and Jupyter lab when the container starts. The key feature of this project is a minimal manual configuration (network and folder to save your data).
 
-## Installation process for Ubuntu 16.04 LTS
 
 ### Dependencies
 
