@@ -43,7 +43,7 @@ RUN pip install jpeg4py
 RUN conda install -y python=3.6.5
 RUN conda install -y -c soumith magma-cuda91
 RUN conda install -y numpy pyyaml scipy ipython mkl matplotlib
-RUN pip install tensorflow-gpu tensorboardx scikit-learn pandas jupyterlab keras
+RUN pip install tensorflow tensorboardx scikit-learn pandas jupyterlab keras
 RUN pip install termcolor tqdm
 RUN pip install opencv-python
 RUN pip install http://download.pytorch.org/whl/cu91/torch-0.4.0-cp36-cp36m-linux_x86_64.whl
