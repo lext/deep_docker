@@ -57,13 +57,13 @@ sh set_up.sh
 To use the pre-built image, run the following command
 
 ```
-DATADIR=<your directory>sh run_docker.sh
+DATADIR=<your directory> sh run_docker.sh
 ```
 
 After this, your local machine will have the following ports reserved:
 
 * 1231 - SSH
-* 1232 - Jupyter lab
+* 1232 - Jupyter lab (password `deep_docker`)
 * 1233 - Tensorboard
 
 Tensorboard is configured to save the logs into `/data/tb_logs_docker` within your container filesystem. The actual files will eventually be stored in `$DATADIR/tb_logs_docker/`
