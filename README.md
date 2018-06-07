@@ -15,7 +15,7 @@ By the default, the docker will import `.gitconfig` from your home directory, ho
 
 To summarize, if you want a predefined docker identity, authorized hosts list and gitconfig, just place the corresponding files into this folder. 
 
-## Building the container
+## Building the image
 
 Now, when everything is set, simply run the following:
 
@@ -24,12 +24,23 @@ sh set_up.sh
 
 ```
 
+# Configuring the image
+
+If you are running the container within a network with a different DNS than 8.8.8.8, then you need to edit `run_docker.sh` and change the variable `$DNS`. You can see the DNS settings which are applied to your interface as follows:
+```
+nmcli -t -f IP4.DNS device show <your interface>
+
+```
+
+Another important option is the folder to store yoru data (by the default it will be erased when you restart the container). Set the variable `$DATADIR`.
+
 # Using the image
 
 To use the pre-built image, run the following command
 
 ```
-DATADIR=<your folder with data> sh run_docker.sh
+sh run_docker.sh
+
 ```
 
 After this, your local machine will have the following ports reserved:
