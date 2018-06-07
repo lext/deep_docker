@@ -4,6 +4,7 @@
 Minimalistic docker environment for running deep learning experiments. It is built on top of nvidia-docker and has tensorflow, keras and pytorch 0.4.0 installed. Furthermore, it automatically runs Tensorboard and Jupyter lab when the container starts. The key feature of this project is a minimal manual configuration (network and folder to save your data).
 
 
+## Installation 
 ### Dependencies
 
 * Install latest nvidia drivers
@@ -41,7 +42,6 @@ Let's say the command has returned you two DNS addresses `x.x.x.x` and `y.y.y.y`
     "dns":["x.x.x.x", "y.y.y.y"]
     
 }
-
 ```
 
 ### Building the image
@@ -69,4 +69,21 @@ After this, your local machine will have the following ports reserved:
 Tensorboard is configured to save the logs into `/data/tb_logs_docker`
 
 You can test the connections by typing `ssh root@localhost -p 1231`
+
+
+### Connecting from a thin client
+If you want to connect from a remote machine, you can run SSH tunnels to the host. The host machine, where you launch your Docker container, should have the OpenSSH server installed. Then, from a client machine, you can execute the following script:
+
+```
+sh connect_container_linux.sh <username> <host address>
+```
+
+The same works for Mac:
+
+
+```
+sh connect_container_mac.sh <username> <host address>
+```
+
+To execute these scripts you should have `screen` installed. Be careful: these scripts kill all the running screens currently running on the client machine
 
