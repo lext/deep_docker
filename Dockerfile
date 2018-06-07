@@ -40,13 +40,13 @@ RUN conda update -n base conda
 
 # DL packages
 RUN pip install jpeg4py
-RUN conda install python==3.6.5
+RUN conda install -y python=3.6.5
 RUN conda install -y -c soumith magma-cuda91
 RUN conda install -y numpy pyyaml scipy ipython mkl matplotlib
-RUN conda install -y -c menpo opencv3
 RUN pip install tensorflow-gpu tensorboardx scikit-learn pandas jupyterlab keras
 RUN pip install termcolor tqdm
-RUN python -V
+RUN pip install opencv-python
+RUN ls /opt/conda/bin
 RUN pip install http://download.pytorch.org/whl/cu91/torch-0.4.0-cp36-cp36m-linux_x86_64.whl
 RUN pip install torchvision
 RUN pip install pydicom
