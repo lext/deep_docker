@@ -19,6 +19,32 @@ By the default, the docker will import `.gitconfig` from your home directory, ho
 
 To summarize, if you want a predefined docker identity, authorized hosts list and gitconfig, just place the corresponding files into this folder. 
 
+
+
+## Network settings
+
+If you are running the container within a network behind some firewall with a custom DNS, them you should edit `/etc/docker/daemon.json`. In order to know yoru DNS, you can execute the following command if you use Network Manager:
+
+```
+nmcli dev show | grep 'IP4.DNS'
+```
+
+Let's say the command has returned you two DNS addresses `x.x.x.x` and `y.y.y.y`. Then the config (given that nvidia-docker is installed) would look like this:
+
+```
+{
+    "runtimes": {
+        "nvidia": {
+            "path": "/usr/bin/nvidia-container-runtime",
+            "runtimeArgs": []
+        }
+    },
+    "dns":["x.x.x.x", "y.y.y.y"]
+    
+}
+
+```
+
 ### Building the image
 
 Now, when everything is set, simply run the following:
@@ -27,21 +53,12 @@ Now, when everything is set, simply run the following:
 sh set_up.sh
 ```
 
-## Configuring the image
-
-If you are running the container within a network with a different DNS than 8.8.8.8, then you need to edit `run_docker.sh` and change the variable `$DNS`. You can see the DNS settings which are applied to your interface as follows:
-```
-nmcli -t -f IP4.DNS device show <your interface>
-```
-
-Another important option is the folder to store yoru data (by the default it will be erased when you restart the container). Set the variable `$DATADIR`.
-
 ## Using the image
 
 To use the pre-built image, run the following command
 
 ```
-sh run_docker.sh
+DATADIR=<your directory>sh run_docker.sh
 ```
 
 After this, your local machine will have the following ports reserved:
