@@ -40,7 +40,6 @@ Let's say the command has returned you two DNS addresses `x.x.x.x` and `y.y.y.y`
         }
     },
     "dns":["x.x.x.x", "y.y.y.y"]
-    
 }
 ```
 
