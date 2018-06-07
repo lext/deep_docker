@@ -3,7 +3,7 @@ docker stop dl_container
 docker rm dl_container
 
 # Change this according to your system and network configuration
-DATA=/media/lext/DATA
+DATADIR=/media/lext/DATA
 DNS=130.231.240.1
 
 # Running the new instance
