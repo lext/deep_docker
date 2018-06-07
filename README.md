@@ -17,7 +17,7 @@ Minimalistic docker environment for running deep learning experiments. It is bui
 
 By the default, the docker will import `.gitconfig` from your home directory, however, you can manually place it in the folder. The same goes for the keypairs of the image. By the default the setup script will check if `docker_identity` exists, and if not will create one. To make sure that you can access the running container from the other machines than the current one, you should create your own `authorized_keys`. By the default, the setup script will copy only the default identity `~/.ssh/id_rsa.pub`. If the latter does not exist, it will be created.
 
-To summarize, if you want a predefined docker identity, authorized hosts list and gitconfig, just place the corresponding files into this folder. 
+To summarize, if you want a predefined docker identity, authorized hosts list and gitconfig, just place the corresponding files into this folder. Do not forget to add your generated `docker_identity.pub` to your GitHub.
 
 
 
@@ -66,13 +66,13 @@ After this, your local machine will have the following ports reserved:
 * 1232 - Jupyter lab
 * 1233 - Tensorboard
 
-Tensorboard is configured to save the logs into `/data/tb_logs_docker`
+Tensorboard is configured to save the logs into `/data/tb_logs_docker` within your container filesystem. The actual files will eventually be stored in `$DATADIR/tb_logs_docker/`
 
 You can test the connections by typing `ssh root@localhost -p 1231`
 
 
 ### Connecting from a thin client
-If you want to connect from a remote machine, you can run SSH tunnels to the host. The host machine, where you launch your Docker container, should have the OpenSSH server installed. Then, from a client machine, you can execute the following script:
+If you want to connect from a remote machine, you can run SSH tunnels to the host. Furthermore, you will need to manually the lists of accepted identities in  `authorized_keys`. The host machine, where you launch your Docker container, should have the OpenSSH server installed. Then, from a client machine, you can execute the following script:
 
 ```
 sh connect_container_linux.sh <username> <host address>
