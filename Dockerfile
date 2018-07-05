@@ -63,16 +63,6 @@ RUN echo "export VISIBLE=now" >> /etc/profile
 RUN mkdir -p /root/.ssh/
 RUN echo "export PATH=$PATH:/opt/conda/bin" >> /root/.bashrc
 
-# Setting the scripts to setup the environment
-COPY run_screens_docker.sh /root/
-COPY authorized_keys /root/.ssh/authorized_keys
-COPY docker_identity /root/.ssh/id_rsa
-COPY docker_identity.pub /root/.ssh/id_rsa.pub
-COPY gitconfig /root/.gitconfig
-
-RUN chown -R root:root /root
-RUN chmod -R 600 /root 
-
 ARG HOST_USER
 RUN groupadd $HOST_USER
 RUN usermod -a -G $HOST_USER root
