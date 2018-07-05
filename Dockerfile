@@ -73,6 +73,11 @@ COPY gitconfig /root/.gitconfig
 RUN chown -R root:root /root
 RUN chmod -R 600 /root 
 
+ARG HOST_USER
+RUN groupadd $HOST_USER
+RUN usermod -a -G $HOST_USER root
+
+
 EXPOSE 22
 ENTRYPOINT ["/usr/sbin/sshd", "-D"]
 

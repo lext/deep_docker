@@ -28,4 +28,4 @@ fi
 ssh-keygen -f "$HOME/.ssh/known_hosts" -R [localhost]:1231
 
 # Building the Docker image
-docker build -t deep_docker .
+docker build --build-arg HOST_USER=$USER -t deep_docker .
