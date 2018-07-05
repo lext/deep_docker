@@ -21,7 +21,7 @@ nvidia-docker run --ipc=host -d --mount type=bind,src=$DATADIR,dst=/data \
 docker cp authorized_keys dl_container:/root/.ssh/authorized_keys
 docker cp docker_identity dl_container:/root/.ssh/id_rsa
 docker cp docker_identity.pub dl_container:/root/.ssh/id_rsa.pub
-docker cp run_screens_docker.sh dl_container:/root/run_screens.sh
+docker cp run_screens_docker.sh dl_container:/root/run_screens_docker.sh
 docker cp gitconfig dl_container:/root/.gitconfig
 
 docker exec -d $CONTAINER chown -R root:root /root
