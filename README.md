@@ -67,7 +67,7 @@ After this, your local machine will have the following ports reserved:
 
 Tensorboard is configured to save the logs into `/data/tb_logs_docker` within your container filesystem. The actual files will eventually be stored in `$DATADIR/tb_logs_docker/`
 
-You can test the connections by typing `ssh <USERNAME>@localhost -p 1231`
+You can test the connections by typing `ssh localhost -p 1231`
 
 
 ### Connecting from a thin client
