@@ -13,7 +13,7 @@ if [ "$(docker ps -aq -f status=exited -f name=$CONTAINER)" ]; then
 fi
 
 # Run the container
-nvidia-docker run --ipc=host -d -v $DATADIR:/data \
+nvidia-docker run --ipc=host -d --mount type=bind,src=$DATADIR,dst=/data \
               -P -p 1231:22 -p 1232:8888 -p 1233:6006 \
               --name $CONTAINER deep_docker
 

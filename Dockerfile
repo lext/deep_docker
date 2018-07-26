@@ -77,6 +77,7 @@ RUN pip install opencv-python
 RUN pip install http://download.pytorch.org/whl/cu91/torch-0.4.0-cp36-cp36m-linux_x86_64.whl
 RUN pip install torchvision
 RUN pip install pydicom
+RUN pip install pretrainedmodels
 
 USER root
 RUN echo "${HOST_USER}" >> /etc/sudoers
